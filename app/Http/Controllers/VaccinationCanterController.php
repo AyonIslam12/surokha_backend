@@ -14,7 +14,8 @@ class VaccinationCanterController extends Controller
      */
     public function index()
     {
-        //
+        $vaccinationCenters = VaccinationCanter::paginate();
+        return view('vaccination-centers.index', ['vaccinationCenters' => $vaccinationCenters]);
     }
 
     /**

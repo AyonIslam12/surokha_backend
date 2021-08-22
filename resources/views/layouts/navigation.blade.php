@@ -25,6 +25,12 @@
                     <x-nav-link :href="route('people.index')" :active="request()->routeIs('people.index')">
                         {{ __('People') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('vaccines.index')" :active="request()->routeIs('vaccines.index')">
+                        {{ __('Vacines') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('vaccination-centers.index')" :active="request()->routeIs('vaccination-centers.index')">
+                        {{ __('Vaccination Center') }}
+                    </x-nav-link>
                 </div>
             </div>
 

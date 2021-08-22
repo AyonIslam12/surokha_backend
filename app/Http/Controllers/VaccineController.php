@@ -14,7 +14,8 @@ class VaccineController extends Controller
      */
     public function index()
     {
-        //
+        $vaccines = Vaccine::paginate();
+        return view('vaccines.index', ['vaccines' => $vaccines]);
     }
 
     /**
@@ -57,7 +58,7 @@ class VaccineController extends Controller
      */
     public function edit(Vaccine $vaccine)
     {
-        //
+        return view('vaccines.edit', ['vaccine' => $vaccine]);
     }
 
     /**
@@ -69,7 +70,15 @@ class VaccineController extends Controller
      */
     public function update(Request $request, Vaccine $vaccine)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+
+        ]);
+        $vaccine->name = $request->name;
+
+        $vaccine->save();
+
+        return redirect(route('vaccines.index'))->with(['message' => $vaccine->name . ' is updated.']);
     }
 
     /**
@@ -80,6 +89,7 @@ class VaccineController extends Controller
      */
     public function destroy(Vaccine $vaccine)
     {
-        //
+        $vaccine->delete();
+        return \redirect()->back()->with('message', $vaccine->name .'' .' is deleted');
     }
 }

@@ -12,6 +12,28 @@ class PeopleController extends Controller
         $people = People::paginate();
         return view('people.index', ['people' => $people]);
     }
+    public function edit($id)
+    {
+        $peoples =People::find($id);
+        return view('people.edit',\compact('peoples'));
+    }
+    public function update(Request $request, $id)
+    {
+        $people = People::find($id);
+        $request->validate([
+
+            'office' => 'required'
+        ]);
+       $people->update([
+
+           'office' => $request->office,
+
+       ]);
+
+        return redirect(route('people.index'))->with(['message' => $people->id_no."'s Id " . ' is updated.']);
+
+
+    }
     public function enableDisable($id)
     {
         $people = People::findOrFail($id);

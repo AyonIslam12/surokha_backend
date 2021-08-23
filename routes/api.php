@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function(){
-    return 'I am from backend';
+    return 'I am from backend ok';
 });
 Route::post('/verify',[VerificationController::class,'verify']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

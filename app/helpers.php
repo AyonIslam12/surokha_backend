@@ -619,7 +619,7 @@ function tika_bd_categories() {
     return $categories;
 }
 
-/* function tikaAgeDifference($date) {
+function tikaAgeDifference($date) {
     $dob = new DateTime($date);
 
     $now = new DateTime();
@@ -629,4 +629,4 @@ function tika_bd_categories() {
     $age = $difference->y;
 
     return  $age;
-} */
+}
